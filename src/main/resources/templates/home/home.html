@@ -1,0 +1,45 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon"
+	href="https://getbootstrap.com/docs/4.0/assets/img/favicons/favicon.ico">
+<title>Welcome</title>
+<link rel="canonical"
+	href="https://getbootstrap.com/docs/4.0/examples/sign-in/">
+<!-- Bootstrap core CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<!-- Custom styles for this template -->
+<link href="/css/home/home.css" rel="stylesheet">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<form class="form-signin" th:action="@{/logout}" method="post">
+		<button class="btn btn-lg btn-primary btn-block" type="submit">Logout</button>
+	</form>
+	<p>This is a home page.</p>
+	<p th:utext="${appUser.firstName} + ' '+ ${appUser.lastName}"></p>
+	<p>
+		Logged user: <span sec:authentication="name"></span>
+	</p>
+	<p>
+		Username:
+		<th:block sec:authentication="principal"></th:block>
+	</p>
+	<p>
+		Role: <span sec:authentication="principal.authorities"></span>
+	</p>
+</body>
+</html>
