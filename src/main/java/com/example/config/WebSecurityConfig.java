@@ -61,7 +61,7 @@ public class WebSecurityConfig {
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
 
-    @Bean
+    @Bean(BeanIds.AUTHENTICATION_MANAGER)
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config, CustomJdbcUserDetailManager userDetailsService)
             throws Exception {
         AuthenticationManager authenticationManager = config.getAuthenticationManager();
