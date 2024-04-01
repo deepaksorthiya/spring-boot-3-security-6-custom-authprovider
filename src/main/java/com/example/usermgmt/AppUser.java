@@ -1,52 +1,41 @@
 package com.example.usermgmt;
 
+import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 
 import java.util.Collection;
 
+@Getter
 public class AppUser extends User {
+    private final String firstName;
+    private final String lastName;
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+    // This constructor is a must
+    public AppUser(String username, String password, boolean enabled, boolean accountNonExpired,
+                   boolean credentialsNonExpired, boolean accountNonLocked,
+                   Collection<? extends GrantedAuthority> authorities, String firstName, String lastName) {
+        super(username, password, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
 
-	// This constructor is a must
-	public AppUser(String username, String password, boolean enabled, boolean accountNonExpired,
-			boolean credentialsNonExpired, boolean accountNonLocked,
-			Collection<? extends GrantedAuthority> authorities) {
-		super(username, password, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
-	}
+    public String getFirstName() {
+        return firstName;
+    }
 
-	// Setter and getters are required
-	private String firstName;
-	private String lastName;
+    public String getLastName() {
+        return lastName;
+    }
 
-	public String getFirstName() {
-		return firstName;
-	}
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	@Override
-	public int hashCode() {
-		return super.hashCode();
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		return super.equals(obj);
-	}
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }
 
 }
