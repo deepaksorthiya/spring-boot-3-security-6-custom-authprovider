@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.springframework.security.core.GrantedAuthority;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Set;
 
@@ -15,15 +16,16 @@ import java.util.Set;
 @ToString
 public class UserProfile implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+    /**
+     *
+     */
+    @Serial
+    private static final long serialVersionUID = 1L;
 
-	private String username;
-	private String firstName;
-	private String lastName;
-	private boolean enabled;
-	private Set<GrantedAuthority> authorities;
+    private String username;
+    private String firstName;
+    private String lastName;
+    private boolean enabled;
+    private Set<GrantedAuthority> authorities;
 
 }
