@@ -24,7 +24,7 @@ Java: 17
 ### Clone this repository:
 
 ```bash
-git clone https://github.com/deepaksorthiya/spring-boot-3-security-6-custom-authprovider.git.git
+git clone https://github.com/deepaksorthiya/spring-boot-3-security-6-custom-authprovider.git
 ```
 ```bash
 cd spring-boot-3-security-6-custom-authprovider
