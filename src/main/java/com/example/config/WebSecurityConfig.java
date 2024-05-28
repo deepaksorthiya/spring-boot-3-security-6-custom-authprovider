@@ -46,6 +46,8 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests((authorizeHttpRequests) -> authorizeHttpRequests
                         //allow h2 console, all actuator endpoints and all static content
                         .requestMatchers(PathRequest.toH2Console(), PathRequest.toStaticResources().atCommonLocations(), EndpointRequest.toAnyEndpoint()).permitAll()
+                        //allow server-info to access all
+                        .requestMatchers("/server-info").permitAll()
                         //custom authorization manager
                         .requestMatchers("/user/**", "/admin/**", "/principal/**", "/authUser/**", "/change-password/**", "/home/**").access(customAuthorizationManager)
                         //rest of all request requires to be authenticated
