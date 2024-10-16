@@ -2,7 +2,6 @@ package com.example.usermgmt;
 
 import com.example.security.CustomJdbcUserDetailManager;
 import jakarta.servlet.http.HttpServletRequest;
-import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
@@ -25,35 +24,32 @@ import java.util.Map;
 @RestController
 public class UserController {
 
-    private final ModelMapper modelMapper;
-
     private final UserDetailsService userDetailsService;
 
     final PasswordEncoder passwordEncoder;
 
     private final Logger logger = LoggerFactory.getLogger(UserController.class);
 
-    public UserController(ModelMapper modelMapper, UserDetailsService userDetailsService, PasswordEncoder passwordEncoder) {
-        this.modelMapper = modelMapper;
+    public UserController(UserDetailsService userDetailsService, PasswordEncoder passwordEncoder) {
         this.userDetailsService = userDetailsService;
         this.passwordEncoder = passwordEncoder;
     }
 
     @GetMapping("/user")
-    public UserProfile getUser() {
+    public AppUser getUser() {
         AppUser appUser = (AppUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        UserProfile userProfile = modelMapper.map(appUser, UserProfile.class);
-        logger.info("User profile {}", userProfile);
-        return userProfile;
+        logger.info("User profile {}", appUser);
+        return appUser;
     }
 
     @GetMapping("/admin")
     // @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @PreAuthorize("hasRole('ADMIN')")
     @PostAuthorize("hasRole('ADMIN')")
-    public UserProfile getAdmin() {
+    public AppUser getAdmin() {
         AppUser appUser = (AppUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return modelMapper.map(appUser, UserProfile.class);
+        logger.info("Admin profile {}", appUser);
+        return appUser;
     }
 
     @GetMapping("/principal")
@@ -82,9 +78,8 @@ public class UserController {
 
     @GetMapping("/exception")
     @PreAuthorize("hasAuthority('ROLE_XXXX')")
-    public UserProfile getRoleXXXXUser() {
-        AppUser appUser = (AppUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return modelMapper.map(appUser, UserProfile.class);
+    public AppUser getRoleXXXXUser() {
+        return (AppUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     }
 
     @GetMapping(value = "/server-info", produces = MediaType.APPLICATION_JSON_VALUE)

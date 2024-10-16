@@ -3,7 +3,6 @@ package com.example.config;
 import com.example.security.CustomAuthenticationProvider;
 import com.example.security.CustomJdbcUserDetailManager;
 import com.example.security.CustomWebAuthenticationDetailsSource;
-import org.modelmapper.ModelMapper;
 import org.springframework.aop.Advisor;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.boot.actuate.audit.AuditEventRepository;
@@ -97,11 +96,6 @@ public class WebSecurityConfig {
         userDetailsServiceBean.setMessageSource(messageSource);
         userDetailsServiceBean.setRolePrefix("ROLE_");
         return userDetailsServiceBean;
-    }
-
-    @Bean
-    public ModelMapper modelMapper() {
-        return new ModelMapper();
     }
 
     @Bean
