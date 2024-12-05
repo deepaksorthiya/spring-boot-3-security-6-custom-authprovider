@@ -16,7 +16,6 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Role;
-import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authorization.AuthorizationDecision;
@@ -67,8 +66,7 @@ public class WebSecurityConfig {
                                     return new AuthorizationDecision(true);
                                 }
                             }
-                            throw new AuthenticationCredentialsNotFoundException(
-                                    "An Authentication object was not found in the SecurityContext");
+                            return new AuthorizationDecision(false);
                         })
                         //rest of all request requires to be authenticated
                         .anyRequest().authenticated())

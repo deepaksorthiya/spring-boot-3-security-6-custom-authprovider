@@ -48,8 +48,14 @@ class UserControllerTest {
     @Test
     public void accessSecuredResourceUnauthenticatedThenRedirectsToLogin() throws Exception {
         mockMvc.perform(get("/user"))
-                .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrlPattern("**/login"));
+                .andExpect(status().isForbidden());
+    }
+
+    @Test
+    @WithUserDetails
+    public void accessSecuredResourceAuthenticatedThenGiveStatusForbidden() throws Exception {
+        mockMvc.perform(get("/admin"))
+                .andExpect(status().isForbidden());
     }
 
     @Test
