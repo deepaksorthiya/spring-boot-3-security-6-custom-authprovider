@@ -30,7 +30,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -59,14 +58,12 @@ public class WebSecurityConfig {
                         //custom authorization manager
                         .requestMatchers("/user/**", "/admin/**", "/principal/**", "/authUser/**", "/change-password/**", "/home/**").access((authentication, object) -> {
                             // make request to Open Policy Agent
-                            if (authentication != null) {
-                                Authentication auth = SecurityContextHolder.getContextHolderStrategy().getContext().getAuthentication();
-                                if (auth != null && auth.isAuthenticated()) {
-                                    LOGGER.info("OpenPolicyAgentAuthorizationManager {}", auth);
-                                    return new AuthorizationDecision(true);
-                                }
+                            Authentication auth = authentication.get();
+                            if (auth == null || !auth.isAuthenticated()) {
+                                return new AuthorizationDecision(false);
                             }
-                            return new AuthorizationDecision(false);
+                            LOGGER.info("OpenPolicyAgentAuthorizationManager {}", auth);
+                            return new AuthorizationDecision(true);
                         })
                         //rest of all request requires to be authenticated
                         .anyRequest().authenticated())

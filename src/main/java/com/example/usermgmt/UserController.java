@@ -1,12 +1,14 @@
 package com.example.usermgmt;
 
 import com.example.security.CustomJdbcUserDetailManager;
+import com.example.security.LocalizedThrowingMethodAuthorizationDeniedHandler;
 import jakarta.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
 import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.authorization.method.HandleAuthorizationDenied;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -22,6 +24,7 @@ import java.security.Principal;
 import java.util.Map;
 
 @RestController
+@HandleAuthorizationDenied(handlerClass = LocalizedThrowingMethodAuthorizationDeniedHandler.class)
 public class UserController {
 
     private final UserDetailsService userDetailsService;
