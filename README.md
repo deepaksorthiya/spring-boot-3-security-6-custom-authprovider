@@ -1,3 +1,11 @@
+[![Java Maven Build Test](https://github.com/deepaksorthiya/spring-boot-3-security-6-custom-authprovider/actions/workflows/maven-build.yml/badge.svg)](https://github.com/deepaksorthiya/spring-boot-3-security-6-custom-authprovider/actions/workflows/maven-build.yml)
+
+---
+
+### ** Spring Boot Security Custom Authentication Provider Example **
+
+---
+
 # Getting Started
 
 ## Requirements:
