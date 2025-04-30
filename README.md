@@ -11,11 +11,11 @@
 ## Requirements:
 
 ```
-Git: 2.49.
-Spring Boot: 3.4.4
+Git: 2.49.0
+Spring Boot: 3.4.5
 Maven: 3.9+
-Java: 17
-Docker Desktop(Optional): Tested on 4.39.0
+Java: 21
+Docker Desktop(Optional): Tested on 4.41.0
 ```
 
 ## Spring Security Implemented Features In This Project
