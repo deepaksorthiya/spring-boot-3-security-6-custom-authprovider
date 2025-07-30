@@ -6,7 +6,7 @@
 # Check https://quarkus.io/guides/quarkus-runtime-base-image for further information about this image.
 FROM quay.io/quarkus/ubi9-quarkus-micro-image:2.0
 WORKDIR /app
-COPY target/spring-boot-3-security-6-custom-authprovider ./
+COPY target/spring-boot-security-custom-authprovider ./
 EXPOSE 8080
 RUN ls -a
-ENTRYPOINT ["./spring-boot-3-security-6-custom-authprovider"]
+ENTRYPOINT ["./spring-boot-security-custom-authprovider"]

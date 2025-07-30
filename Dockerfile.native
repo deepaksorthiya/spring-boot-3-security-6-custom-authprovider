@@ -6,7 +6,7 @@
 # FROM registry.access.redhat.com/ubi9/ubi-minimal:9.5
 FROM oraclelinux:9-slim
 WORKDIR /app
-COPY target/spring-boot-3-security-6-custom-authprovider ./
+COPY target/spring-boot-security-custom-authprovider ./
 EXPOSE 8080
 RUN ls -a
-ENTRYPOINT ["./spring-boot-3-security-6-custom-authprovider"]
+ENTRYPOINT ["./spring-boot-security-custom-authprovider"]

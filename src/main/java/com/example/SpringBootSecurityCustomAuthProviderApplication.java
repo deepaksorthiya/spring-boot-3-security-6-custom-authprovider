@@ -18,15 +18,15 @@ import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import java.util.List;
 
 @SpringBootApplication
-@ImportRuntimeHints(SpringBoot3Security6CustomAuthProviderApplication.ExamplesRuntimeHints.class)
-public class SpringBoot3Security6CustomAuthProviderApplication implements ApplicationRunner {
+@ImportRuntimeHints(SpringBootSecurityCustomAuthProviderApplication.ExamplesRuntimeHints.class)
+public class SpringBootSecurityCustomAuthProviderApplication implements ApplicationRunner {
 
     final PasswordEncoder passwordEncoder;
     final UserDetailsService userDetailsService;
     final AuthenticationConfiguration authenticationConfiguration;
     private final List<AuthorizationManager> authorizationManagers;
 
-    public SpringBoot3Security6CustomAuthProviderApplication(PasswordEncoder passwordEncoder, UserDetailsService userDetailsService, AuthenticationConfiguration authenticationConfiguration, List<AuthorizationManager> authorizationManagers) {
+    public SpringBootSecurityCustomAuthProviderApplication(PasswordEncoder passwordEncoder, UserDetailsService userDetailsService, AuthenticationConfiguration authenticationConfiguration, List<AuthorizationManager> authorizationManagers) {
         this.passwordEncoder = passwordEncoder;
         this.userDetailsService = userDetailsService;
         this.authenticationConfiguration = authenticationConfiguration;
@@ -34,7 +34,7 @@ public class SpringBoot3Security6CustomAuthProviderApplication implements Applic
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringBoot3Security6CustomAuthProviderApplication.class, args);
+        SpringApplication.run(SpringBootSecurityCustomAuthProviderApplication.class, args);
     }
 
     @Override

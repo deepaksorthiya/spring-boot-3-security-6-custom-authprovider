@@ -36,11 +36,11 @@ Docker Desktop(Optional): Tested on 4.43.0
 ### Clone this repository:
 
 ```bash
-git clone https://github.com/deepaksorthiya/spring-boot-3-security-6-custom-authprovider.git
+git clone https://github.com/deepaksorthiya/spring-boot-security-custom-authprovider.git
 ```
 
 ```bash
-cd spring-boot-3-security-6-custom-authprovider
+cd spring-boot-security-custom-authprovider
 ```
 
 ### Build Project:
@@ -64,7 +64,7 @@ cd spring-boot-3-security-6-custom-authprovider
 ### Run Using Docker
 
 ```bash
-docker run --name spring-boot-3-security-6-custom-authprovider -p 8080:8080 deepaksorthiya/spring-boot-3-security-6-custom-authprovider:0.0.1-SNAPSHOT
+docker run --name spring-boot-security-custom-authprovider -p 8080:8080 deepaksorthiya/spring-boot-security-custom-authprovider:0.0.1-SNAPSHOT
 ```
 
 ### Users for Testing
