@@ -1,4 +1,4 @@
-[![Java Maven Build Test](https://github.com/deepaksorthiya/spring-boot-3-security-6-custom-authprovider/actions/workflows/maven-build.yml/badge.svg)](https://github.com/deepaksorthiya/spring-boot-3-security-6-custom-authprovider/actions/workflows/maven-build.yml)
+[![Java Maven Build Test](https://github.com/deepaksorthiya/spring-boot-security-custom-authprovider/actions/workflows/maven-build.yml/badge.svg)](https://github.com/deepaksorthiya/spring-boot-security-custom-authprovider/actions/workflows/maven-build.yml)
 
 ---
 
